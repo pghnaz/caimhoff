@@ -19,9 +19,12 @@ class Content {
 	render(data) {
 		return `
 			<main id="site_main">
-				<header id="main_header">
-					<h1>${data.title}</h1>
-				</header>
+				${data.title
+					? `<header id="main_header">
+						<h1>${data.title}</h1>
+					</header>`
+					: ''
+				}
 				${data.content}
 			</main>
 		`
