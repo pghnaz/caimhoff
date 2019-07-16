@@ -1,6 +1,6 @@
 /**
  * @file Defines the base template
- * @author Reuben L. Lillie <rillie@pghnaz.org>
+ * @author Reuben L. Lillie <rlillie@pghnaz.org>
  */
 
 /**
@@ -22,6 +22,9 @@ module.exports = function (data) {
 					: `${data.site.title} - ${data.title}`
 				}
 			</title>
+			<style>
+				${this.minifyCSS(this.fileToString('/includes/assets/css/inline.css'))}
+			</style>
 		</head>
 		<body>
 			<header id="site_header">
