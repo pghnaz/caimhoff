@@ -1,6 +1,6 @@
 /**
  * @file Defines the nested content template
- * @author Reuben L. Lillie <rillie@pghnaz.org>
+ * @author Reuben L. Lillie <rlillie@pghnaz.org>
  */
 
 /**
