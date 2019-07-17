@@ -36,6 +36,7 @@ module.exports = function (data) {
 			${data.content}
 			<footer id="site_footer">
 				<p><a href="/copyright/">Copyright</a> &copy; ${data.site.copyright.year} by ${data.site.copyright.owner}</p>
+				<p>${this.siteTagline(data)}</p>
 			</footer>
 		</body>
 	</html>
