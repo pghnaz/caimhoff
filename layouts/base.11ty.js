@@ -16,12 +16,7 @@ module.exports = function (data) {
 		<head>
 			<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			<title>
-				${data.page.url === '/'
-					? `${data.site.title}`
-					: `${data.site.title} - ${data.title}`
-				}
-			</title>
+			${this.titleTag(data)}
 			<style>
 				${this.minifyCSS(this.fileToString('/includes/assets/css/inline.css'))}
 			</style>
