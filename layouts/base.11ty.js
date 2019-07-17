@@ -13,14 +13,7 @@
 module.exports = function (data) {
 	return `<!DOCTYPE html>
 	<html lang="en">
-		<head>
-			<meta charset="utf-8">
-			<meta name="viewport" content="width=device-width, initial-scale=1.0">
-			${this.titleTag(data)}
-			<style>
-				${this.minifyCSS(this.fileToString('/includes/assets/css/inline.css'))}
-			</style>
-		</head>
+		${this.headTag(data)}
 		<body>
 			<header id="site_header">
 				${data.page.url === '/'
