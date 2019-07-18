@@ -1,5 +1,5 @@
 /**
- * @file Defines a shortcode to load social media metadat into the `<head>`
+ * @file Defines a shortcode to load social media metadata into the `<head>`
  * @author Reuben L. Lillie <rlillie@pghnaz.org>
  */
 
