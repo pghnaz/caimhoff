@@ -36,20 +36,6 @@ class ChurchDirectory {
 							</h1>
 						</header>
 						<section>
-							<p>
-								${item.properties.gmcID
-									? `ID: <span id="churchID_${id}">
-										${item.properties.gmcID}
-									</span>`
-									: ''
-								}</span>
-								${item.properties.yearOrganized
-									? `Organized: <span id="churchYearOrganized_${id}">
-										${item.properties.yearOrganized}
-									</span>`
-									: ''
-								}
-							</p>
 							<address>
 								${item.properties.address
 									? `
