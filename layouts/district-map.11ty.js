@@ -3,8 +3,6 @@
  * @author Reuben L. Lillie <rlillie@pghnaz.org>
  */
 
-require('dotenv').config()
-
 /**
  * An Eleventy JavaScript template using classes and optional data method
  * @class

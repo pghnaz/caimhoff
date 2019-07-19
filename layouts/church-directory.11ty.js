@@ -17,7 +17,7 @@ class ChurchDirectory {
 
 	render(data) {
 		var arr = Object.keys(data.churches)
-			            .map(item => data.churches[item])
+						.map(item => data.churches[item])
 		return `
 			${data.content}
 			<section>

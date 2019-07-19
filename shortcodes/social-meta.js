@@ -16,7 +16,7 @@ module.exports = function (eleventyConfig) {
 	 * @method
 	 * @name socialMeta
 	 * @example `${this.socialMeta(data)}`
-	 * @param {Object} data - Template data
+	 * @param {Object} data The 11ty `data` object
 	 * @return {string} Composite HTML template literal
 	 * @see {@link https://css-tricks.com/essential-meta-tags-social-media/ Adam Coti, “The Essential Meta Tags for Social Media,” _CSS-Tricks_ (updated December 21, 2016)}
 	 */

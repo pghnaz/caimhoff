@@ -3,8 +3,6 @@
  * @author Reuben L. Lillie <rlillie@pghnaz.org>
  */
 
-require('dotenv').config()
-
 /**
  * An Eleventy JavaScript template using classes and optional data method
  * @class
@@ -106,7 +104,7 @@ class LocalChurch {
 						: ''
 					}
 					<div id="map"></div>
-					<p>Find more local churches on our <a href="/map/">District Map</a></p>
+					<p>Find more local churches on our <a href="/map/">District Map</a>.</p>
 				</section>
 				${data.content}
 			</article>

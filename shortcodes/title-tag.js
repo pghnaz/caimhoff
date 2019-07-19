@@ -12,11 +12,11 @@
 module.exports = function (eleventyConfig) {
 
 	/**
-	 * HTML `<title>` markup.
+	 * HTML `<title>` markup
 	 * @method
 	 * @name titleTag
-	 * @param {Object} data - The 11ty `data` object.
-	 * @return {string} HTML template literal.
+	 * @param {Object} data The 11ty `data` object
+	 * @return {string} HTML template literal
 	 * @example `${this.titleTag(data)}`
 	 */
 	eleventyConfig.addShortcode('titleTag', function (data) {
@@ -33,4 +33,3 @@ module.exports = function (eleventyConfig) {
 	})
 
 }
-

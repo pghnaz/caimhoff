@@ -12,10 +12,10 @@
 module.exports = function (eleventyConfig) {
 
 	/**
-	 * Tagline shortcode markup.
+	 * Tagline shortcode markup
 	 * @method
 	 * @name siteTagline
-	 * @param {Object} data - The 11ty `data` object
+	 * @param {Object} data The 11ty `data` object
 	 * @return {string} HTML template literal
 	 * @example `${this.siteTagline(data)}`
 	 */
@@ -28,4 +28,3 @@ module.exports = function (eleventyConfig) {
 	})
 
 }
-

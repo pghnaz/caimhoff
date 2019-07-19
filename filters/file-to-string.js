@@ -23,7 +23,7 @@ module.exports = function (eleventyConfig) {
 	 * @return {string} Stringified version of target file’s contents
 	 * @example	`${this.fileToString('includes/assets/css/inline.css')}`
 	 */
-	eleventyConfig.addJavaScriptFunction('fileToString', function (file) {
+	eleventyConfig.addFilter('fileToString', function (file) {
 		return fs.readFileSync(`src/${file}`).toString()
 	})
 

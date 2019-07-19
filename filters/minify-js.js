@@ -19,12 +19,12 @@ module.exports = function (eleventyConfig) {
 
 	/**
 	 * Minify a stringified version of a JavaScript file
-	 * @param {string} stylesheet A raw script
+	 * @param {string} code A raw script
 	 * @return {string} The minified script
 	 * @example	`${this.minifyJS($this.fileToString('./src/includes/assets/js/district-map.js'))}`
 	 */
 	eleventyConfig.addFilter("minifyJS", function (code) {
-	    var minified = UglifyJS.minify(code)
+			var minified = UglifyJS.minify(code)
 		if (minified.error) {
 			console.log("UglifyJS error: ", minified.error)
 			return code
