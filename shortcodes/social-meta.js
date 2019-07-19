@@ -1,5 +1,5 @@
 /**
- * @file Defines a shortcode to load social media metadat into the `<head>`
+ * @file Defines a shortcode to load social media metadata into the `<head>`
  * @author Reuben L. Lillie <rlillie@pghnaz.org>
  */
 
@@ -16,7 +16,7 @@ module.exports = function (eleventyConfig) {
 	 * @method
 	 * @name socialMeta
 	 * @example `${this.socialMeta(data)}`
-	 * @param {Object} data - Template data
+	 * @param {Object} data The 11ty `data` object
 	 * @return {string} Composite HTML template literal
 	 * @see {@link https://css-tricks.com/essential-meta-tags-social-media/ Adam Coti, “The Essential Meta Tags for Social Media,” _CSS-Tricks_ (updated December 21, 2016)}
 	 */
@@ -47,8 +47,8 @@ module.exports = function (eleventyConfig) {
 				<meta name="twitter:card" content="summary_large_image">
 			`
 			: html += `
-				<meta property="og:image" content="/assets/img/headshot.jpg">
-				<meta name="twitter:image" content="/assets/img/headshot.jpg">
+				<meta property="og:image" content="/favicons/android-chrome-512x512.png">
+				<meta name="twitter:image" content="/favicons/android-chrome-512x512.png">
 				<meta name="twitter:card" content="summary_large_image">
 			`
 		html += `<meta property="og:url" content="${data.page.url}">`

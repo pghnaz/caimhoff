@@ -7,3 +7,13 @@
 *:before {
 	box-sizing: border-box;	
 }
+
+/**
+ * Sizing for Google Maps 
+ * @link https://developers.google.com/maps/documentation/javascript/tutorial/
+ */
+#map {
+	height: 37.125vmax; /* Map height must be explicit */
+	width: 66ch;
+	max-width: 100%;
+}
