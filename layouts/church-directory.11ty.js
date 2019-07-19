@@ -8,7 +8,7 @@
  * @class
  * @see {@link https://www.11ty.io/docs/languages/javascript/#classes 11ty docs}
  */
-class FindAChurch {
+class ChurchDirectory {
 	data() {
 		return {
 			layout: 'layouts/content'
@@ -82,4 +82,4 @@ class FindAChurch {
 	}
 }
 
-module.exports = FindAChurch
+module.exports = ChurchDirectory

@@ -3,12 +3,14 @@
  * @author Reuben L. Lillie <rlillie@pghnaz.org>
  */
 
+require('dotenv').config()
+
 /**
  * An Eleventy JavaScript template using classes and optional data method
  * @class
  * @see {@link https://www.11ty.io/docs/languages/javascript/#classes 11ty docs}
  */
-class FindAChurch {
+class LocalChurch {
 	data() {
 		return {
 			layout: 'layouts/content'
@@ -19,7 +21,7 @@ class FindAChurch {
 		var item = data.churches[data.page.fileSlug]
 		var id = item.properties.gmcID.substr(4)
 		return `
-			<article>
+			<article id="article_${id}">
 				<header>
 					<h1>${item.properties.name} Church of the Nazarene</h1>
 				</header>
@@ -52,6 +54,17 @@ class FindAChurch {
 							: ''
 						}
 					</address>
+					${item.properties.phone
+						? `<p>
+							<a href="tel:+1${item.properties.phone
+									.toString()
+									.trim()
+									.replace(/[^0-9]/g, '')}">
+								${item.properties.phone}
+							</a>
+						</p>`
+						: ''
+					}
 					<p>
 						${item.properties.pastor
 							? `Pastor ${item.properties.pastor}`
@@ -81,20 +94,56 @@ class FindAChurch {
 					}
 					${item.properties.social
 						? `${(() => {
-							var arr = Object.keys(item.properties.social)
-											.map(profile => item.properties.social[profile])
-							return arr.map(profile => `
-								<a href="${profile}">
-									${Object.keys(item.properties.social).find(key => item.properties.social[key] === profile)}
-								</a>`).join('')
+							var arr = this.arrayFromObject(item.properties.social)
+							return arr.map(profile => {
+								var platform = Object.keys(item.properties.social)
+										.find(key => item.properties.social[key] === profile).toString().trim()
+								return `
+								<a class="${platform}" href="${profile}">
+									${platform.charAt(0).toUpperCase()}${platform.substr(1)}
+								</a>`}).join('&nbsp;')
 						})()}`
 						: ''
 					}
+					<div id="map"></div>
+					<p>Find more local churches on our <a href="/map/">District Map</a></p>
 				</section>
 				${data.content}
 			</article>
+			<script async defer>
+			${this.minifyJS(`
+				var map
+				var initMap = function () {
+				var map = new google.maps.Map(document.getElementById('map'), {
+					center: {
+						lat: ${item.geometry.coordinates[1]},
+						lng: ${item.geometry.coordinates[0]}
+					},
+					zoom: 13,
+				})
+
+					var image = {
+						url: '/includes/assets/images/nazarene-logo-map-marker-red.png',
+						size: new google.maps.Size((35.184), 48),
+						origin: new google.maps.Point (0, 0),
+						anchor: new google.maps.Point (0, 48)
+					}
+
+					var marker = new google.maps.Marker({
+						position: {
+							lat: ${item.geometry.coordinates[1]},
+							lng: ${item.geometry.coordinates[0]}
+						},
+						map: map,
+						icon: image
+					})
+				}`)
+
+			}
+			</script>
+			${this.googleMapsAPI()}
 		`
 	}
 }
 
-module.exports = FindAChurch
+module.exports = LocalChurch

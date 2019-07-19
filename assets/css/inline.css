@@ -7,3 +7,9 @@
 *:before {
 	box-sizing: border-box;	
 }
+
+#map {
+	height: 37.125vmax;
+	width: 66ch;
+	max-width: 100%;
+}
