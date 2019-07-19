@@ -47,8 +47,8 @@ module.exports = function (eleventyConfig) {
 				<meta name="twitter:card" content="summary_large_image">
 			`
 			: html += `
-				<meta property="og:image" content="/assets/img/headshot.jpg">
-				<meta name="twitter:image" content="/assets/img/headshot.jpg">
+				<meta property="og:image" content="/favicons/android-chrome-512x512.png">
+				<meta name="twitter:image" content="/favicons/android-chrome-512x512.png">
 				<meta name="twitter:card" content="summary_large_image">
 			`
 		html += `<meta property="og:url" content="${data.page.url}">`
