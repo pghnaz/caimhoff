@@ -24,6 +24,7 @@ module.exports = function (data) {
 			</header>
 			${data.content}
 			<footer id="site_footer">
+				<p>${this.editThisPage(data)}</p>
 				<p><a href="/copyright/">Copyright</a> &copy; ${data.site.copyright.year} by ${data.site.copyright.owner}</p>
 				<p>${this.siteTagline(data)}</p>
 			</footer>
