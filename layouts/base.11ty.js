@@ -20,6 +20,7 @@ module.exports = function (data) {
 					? `<h1>${data.site.title}</h1>`
 					: `<a href="/"><h1>${data.site.title}</h1></a>`
 				}
+				${this.callToAction(data)}
 			</header>
 			${data.content}
 			<footer id="site_footer">
