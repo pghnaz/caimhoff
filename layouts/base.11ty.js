@@ -15,7 +15,7 @@ module.exports = function (data) {
 	<html lang="en">
 		${this.headTag(data)}
 		<body class="grid no-margin ${data.page.fileSlug ? data.page.fileSlug : 'home'}">
-			<header id="site_header" class="flex align-items-center grid-column-full-bleed space-between xx-large padding">
+			<header id="site_header" class="flex flex-wrap align-items-center grid-column-full-bleed xx-large">
 				${data.site.logo && data.page.url === '/'
 					? `<span class="logo flex">${this.fileToString(data.site.logo)}</span>`
 					: data.page.url === '/'

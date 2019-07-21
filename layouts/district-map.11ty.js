@@ -35,7 +35,7 @@ class DistrictMap {
 							lat: 40.89822,
 							lng: -79.98357
 						},
-						zoom: 8 // wide area, large metropolitan area
+						zoom: 7 // wide area, large metropolitan area
 					})
 
 					// An array of GeoJSON feature objects
@@ -93,7 +93,7 @@ class DistrictMap {
 								'</address>'
 								: ''
 							item.geometry.coordinates
-								? html += '<p>' +
+								? html += '<p class="small gray">' +
 									item.geometry.coordinates[1] + ', ' +
 									item.geometry.coordinates[0] +
 								'</p>'
