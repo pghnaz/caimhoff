@@ -28,6 +28,18 @@ module.exports = function (eleventyConfig) {
 				<meta name="viewport" content="width=device-width, initial-scale=1.0">
 				${this.socialMeta(data)}
 				<style>
+					${this.minifyCSS(`
+						:root {
+							--black: ${data.site.colors.black};
+							--white: ${data.site.colors.white};
+							--gray: ${data.site.colors.gray};
+							--main-color: ${data.site.colors.main};
+							--accent-color-1: ${data.site.colors.accentOne};
+							--accent-color-2: ${data.site.colors.accentTwo};
+							--accent-color-3: ${data.site.colors.accentThree};
+							--neutral: ${data.site.colors.neutral};
+						}
+					`)}
 					${this.minifyCSS(this.fileToString('/includes/assets/css/inline.css'))}
 				</style>
 			</head>
