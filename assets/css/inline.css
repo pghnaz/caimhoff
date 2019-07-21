@@ -1,61 +1,442 @@
-/* Normal font */
-@font-face {
-  font-family: Pittsburgh;
-  src:  url('/includes/assets/fonts/pittsburgh/pittsburgh-light.woff2') format('woff2'),
-        url('/includes/assets/fonts/pittsburgh/pittsburgh-light.woff') format('woff');
-}
-
-/* Italic font */
-@font-face {
-  font-family: Pittsburgh;
-  src:  url('/includes/assets/fonts/pittsburgh/pittsburgh-lightitalic.woff2') format('woff2'),
-        url('/includes/assets/fonts/pittsburgh/pittsburgh-lightitalic.woff') format('woff');
-	font-style: italic;
-}
-
-/* Bold font */
-@font-face {
-  font-family: Pittsburgh;
-  src:  url('/includes/assets/fonts/pittsburgh/pittsburgh-semibold.woff2') format('woff2'),
-        url('/includes/assets/fonts/pittsburgh/pittsburgh-semibold.woff') format('woff');
-	font-weight: bold;
-}
-
-/* Bold italic font */
-@font-face {
-  font-family: Pittsburgh;
-  src:  url('/includes/assets/fonts/pittsburgh/pittsburgh-semibolditalic.woff2') format('woff2'),
-        url('/includes/assets/fonts/pittsburgh/pittsburgh-semibolditalic.woff') format('woff');
-	font-style: italic;
-	font-weight: bold;
-}
-
-/**
- * Add box sizing to everything
- * @link https://www.paulirish.com/2012/box-sizing-border-box-ftw/
+/*
+ * Critical CSS to minify and inline.
  */
-html {
-	box-sizing: border-box;
-}
 
-*,
-*:after,
-*:before {
-	box-sizing: inherit;
-}
+/***********************************************************************
+ * Table of Contents
+ *
+ * 1.0 Custom Fonts
+ * 2.0 Document-Level Rules
+ *   2.1 Custom Properties
+ *   2.2 The `html` element
+ * 3.0 Layout
+ *   3.1 Grid
+ *   3.2 Flexbox
+ * 4.0 Images
+ * 5.0 Typography
+ * 6.0 Links
+ * 7.0 Colors, Borders, and Shading
+ *   7.1 Colors
+ *   7.2 Borders
+ *   7.3 Shading
+ * 8.0 Media Queries
+ **********************************************************************/
 
-body {
-	font-family: Pittsburgh, sans-serif;
-	margin: 0; /* Remove default margin from <body> in some browsers */
-}
+/***********************************************************************
+ * 1.0 Custom Fonts
+ *
+ * https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face
+ * https://www.zachleat.com/web/comprehensive-webfonts/
+ **********************************************************************/
 
-/**
+	/*
+	 * Pittsburgh (Light, Light Italic, Semi Bold, and Semi Bold Italic)
+	 * SIL Open Font License v1.10
+	 * Derived from Metroplis by Chris Simpson
+	 * https://www.fontsquirrel.com/fonts/metropolis
+	 */
+	@font-face {
+		font-family: Pittsburgh;
+		src:  url('/includes/assets/fonts/pittsburgh/pittsburgh-light.woff2') format('woff2'),
+					url('/includes/assets/fonts/pittsburgh/pittsburgh-light.woff') format('woff');
+	}
+
+	/* Italic font */
+	@font-face {
+		font-family: Pittsburgh;
+		src:  url('/includes/assets/fonts/pittsburgh/pittsburgh-lightitalic.woff2') format('woff2'),
+					url('/includes/assets/fonts/pittsburgh/pittsburgh-lightitalic.woff') format('woff');
+		font-style: italic;
+	}
+
+	/* Bold font */
+	@font-face {
+		font-family: Pittsburgh;
+		src:  url('/includes/assets/fonts/pittsburgh/pittsburgh-semibold.woff2') format('woff2'),
+					url('/includes/assets/fonts/pittsburgh/pittsburgh-semibold.woff') format('woff');
+		font-weight: bold;
+	}
+
+	/* Bold italic font */
+	@font-face {
+		font-family: Pittsburgh;
+		src:  url('/includes/assets/fonts/pittsburgh/pittsburgh-semibolditalic.woff2') format('woff2'),
+					url('/includes/assets/fonts/pittsburgh/pittsburgh-semibolditalic.woff') format('woff');
+		font-style: italic;
+		font-weight: bold;
+	}
+
+/***********************************************************************
+ * 2.0 Document-Level Rules
+ **********************************************************************/
+
+	/*
+	 * 2.1 Custom Properties
+	 *
+	 * Custom color properties are from src/data/site.json
+	 * and are added inline in JavaScript template files
+	 *
+	 * https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties
+	 */
+
+		:root {
+			/* Units */
+			--base-unit: 1vmin;
+			--base-unit-sixteenth: calc(var(--base-unit) / 16);
+			--base-unit-eighth: calc(var(--base-unit) / 8);
+			--base-unit-quarter: calc(var(--base-unit) / 4);
+			--base-unit-half: calc(var(--base-unit) / 2);
+			--base-unit-2x: calc(var(--base-unit) * 2);
+			--base-unit-4x: calc(var(--base-unit) * 4);
+			--paragraph-width: 66ch;
+			/* Shading */
+			--shadow: var(--base-unit-quarter) var(--base-unit-quarter) var(--base-unit-quarter) var(--gray);
+		}
+
+	/*
+	 * 2.2 The `html ` Element
+	 */
+
+		html {
+			font-family: Pittsburgh, sans-serif;
+			line-height: 1.5;
+			/*
+			 * Use smooth scrolling to page anchors by default
+			 * https://developer.mozilla.org/en-US/docs/Web/CSS/scroll-behavior
+			 * https://gomakethings.com/smooth-scrolling-links-with-only-css/
+			 */
+			scroll-behavior: smooth;
+		}
+
+		@media screen and (prefers-reduced-motion: reduce) {
+			html {
+				scroll-behavior: auto;
+			}
+		}
+
+		/*
+		 * Show pointer for clickable DOM elements
+		 * https://developer.mozilla.org/en-US/docs/Web/CSS/cursor
+		 */
+		button:hover,
+		summary:hover {
+			cursor: pointer;
+		}
+
+/***********************************************************************
+ * 3.0 Layout
+ **********************************************************************/
+
+	/*
+	 * Universal box-sizing
+	 * https://developer.mozilla.org/en-US/docs/Web/CSS/box-sizing
+	 */
+	*,
+	*:before,
+	*:after {
+		box-sizing: border-box;
+	}
+
+	/*
+	 * 3.1 Grid
+	 *
+	 * https://developer.mozilla.org/en-US/docs/Glossary/Grid
+	 */
+
+			body {
+				background: transparent;
+				grid-template-columns: 1fr minmax(320px,var(--paragraph-width)) 1fr;
+				grid-template-rows: min-content 1fr min-content;
+				min-height: 100vh;
+			}
+
+			.grid {
+				display: grid;
+				grid-row-gap: var(--base-unit-4x);
+			}
+
+			.grid-column-full-bleed {
+				grid-column: 1 / -1;
+			}
+
+			.grid-column-content {
+				grid-column: 2;
+			}
+
+			.grid-repeat-columns {
+				grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
+				grid-column-gap: var(--base-unit-4x);
+			}
+
+			#site_header {
+				grid-row: 1;
+			}
+
+			#site_main {
+				grid-row: 2;
+			}
+
+			#site_footer {
+				grid-row: 3;
+			/*	grid-template-columns: 1fr max-content; */
+			}
+
+			#site_footer :last-child {
+				grid-row: 2;
+				grid-column: 1 / -1;
+			}
+
+		/*
+		 * 3.2 Flexbox
+		 *
+		 * https://developer.mozilla.org/en-US/docs/Glossary/Flexbox
+		 */
+
+			.flex {
+				display: flex;
+			}
+
+			.flex-column {
+				flex-direction: column;
+			}
+
+			.flex-wrap {
+				flex-wrap: wrap;
+			}
+
+			/* Justification and Alignment */
+			.space-around {
+				justify-content: space-around;
+			}
+
+			.space-between {
+				justify-content: space-between;
+			}
+
+			.justify-center {
+				justify-content: center;
+			}
+
+			.align-items-center {
+				align-items: center;
+			}
+
+			.align-self-end {
+				align-self: end;
+			}
+
+			/* Padding */
+			.padding {
+				padding: var(--base-unit);
+			}
+
+			.less-padding {
+				padding: var(--base-unit-half);
+			}
+
+			.more-padding {
+				padding: var(--base-unit-2x);
+			}
+
+			/* Margin */
+			.no-margin {
+				margin: 0;
+			}
+
+/***********************************************************************
+ * 4.0 Images
+ **********************************************************************/
+
+	picture {
+		line-height: 0;
+		width: max-content;
+		margin: 0 auto;
+	}
+
+	img {
+		max-width: 100%;
+		color: var(--gray);
+	}
+
+/***********************************************************************
+ * 5.0 Typography
+ **********************************************************************/
+
+	.bold {
+		font-style: bold;
+		font-weight: 600;
+	}
+
+	.x-small {
+		font-size: x-small;
+	}
+
+	.small {
+		font-size: small;
+	}
+
+	.medium {
+		font-size: medium;
+	}
+
+	.larger {
+		font-size: larger;
+	}
+
+	.xx-large {
+		font-size: x-large;
+	}
+
+/***********************************************************************
+ * 6.0 Links
+ **********************************************************************/
+
+	a {
+		color: var(--accent-color-1);
+	}
+
+	a:focus,
+	a:hover {
+		color: var(--gray);
+	}
+
+	a:focus .prompt,
+	a:hover .prompt {
+		color: var(--accent-color-1);
+	}
+
+	.call-to-action {
+		color: var(--white);
+		background-color: var(--accent-color-1);
+		text-decoration: none;
+	}
+
+	.call-to-action:focus,
+	.call-to-action:hover	{
+		color: var(--white);
+		box-shadow: var(--shadow);
+	}
+/***********************************************************************
+ * 7.0 Colors, Borders, and Shading
+ **********************************************************************/
+
+	/*
+	 * 7.1 Colors
+	 */
+
+		.black {
+			color: var(--black);
+		}
+
+		.white {
+			color: var(--white);
+		}
+
+		.gray {
+			color: var(--gray);
+		}
+
+		.main-color {
+			color: var(--main-color);
+		}
+
+		.accent-color-1 {
+			color: var(--accent-color-1);
+		}
+
+		.accent-color-2 {
+			color: var(--accent-color-2);
+		}
+
+		.accent-color-3 {
+			color: var(--accent-color-3);
+		}
+
+		.neutral {
+			color: var(--neutral-color);
+		}
+
+		.background-gray {
+			background-color: var(--gray);
+		}
+
+	/*
+	 * 7.2 Borders
+	 */
+
+		.border {
+			border: var(--base-unit-sixteenth) solid var(--gray);
+		}
+
+		.border-top {
+			border-top: var(--base-unit-sixteenth) solid var(--gray);
+		}
+
+		.border-right {
+			border-right: var(--base-unit-sixteenth) solid var(--gray);
+		}
+
+		.border-bottom {
+			border-bottom: var(--base-unit-sixteenth) solid var(--gray);
+		}
+
+		.border-left {
+			border-left: var(--base-unit-sixteenth) solid var(--gray);
+		}
+
+		.border-radius {
+			border-radius: var(--base-unit);
+		}
+
+		.circular {
+			border-radius: 50%;
+		}
+
+	/*
+	 * 7.3 Shading
+	 */
+
+		.shadow {
+			box-shadow: var(--shadow);
+		}
+
+/***********************************************************************
+ * 8.0 Media Queries
+ **********************************************************************/
+
+	@media screen and (min-width: 480px) {
+		/* Make fonts slightly larger */
+		html {
+			font-size: 1.25em;
+		}
+
+		/* From x-large */
+		.xx-large {
+			font-size: xx-large;
+		}
+	}
+
+	/* Size fonts dynamically on larger screens */
+	@media screen and (min-width: 1100px) {
+		html {
+			font-size: 1.75vw;
+		}
+	}
+
+/*
  * @todo Move to external maps-only stylesheet
  * Sizing for Google Maps
- * @link https://developers.google.com/maps/documentation/javascript/tutorial/
+ * https://developers.google.com/maps/documentation/javascript/tutorial/
  */
 #map {
 	height: 37.125vmax; /* Map height must be explicit */
 	width: 66ch;
-	max-width: 100%;
+	max-width: calc(100vw - var(--base-unit-4x));
+}
+
+.logo svg {
+	height: auto;
+	width: 100%;
+	max-width: calc(var(--paragraph-width) / 3);
+	padding: var(--base-unit);
 }

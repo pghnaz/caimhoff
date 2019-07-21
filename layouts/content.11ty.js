@@ -18,15 +18,16 @@ class Content {
 
 	render(data) {
 		return `
-			<main id="site_main">
-				${data.title
-					? `<header id="main_header">
-						<h1>${data.title}</h1>
-					</header>`
-					: ''
-				}
-				${data.content}
-			</main>
+			${data.title
+				? `<header id="main_header">
+					<h1>${data.title}</h1>
+				</header>`
+				: ''
+			}
+			${data.content}
+			<footer class="small">
+				<p>${this.editThisPage(data)}</p>
+			</footer>
 		`
 	}
 

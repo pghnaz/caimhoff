@@ -37,7 +37,7 @@ module.exports = function (eleventyConfig) {
 							--accent-color-1: ${data.site.colors.accentOne};
 							--accent-color-2: ${data.site.colors.accentTwo};
 							--accent-color-3: ${data.site.colors.accentThree};
-							--neutral: ${data.site.colors.neutral};
+							--neutral-color: ${data.site.colors.neutral};
 						}
 					`)}
 					${this.minifyCSS(this.fileToString('/includes/assets/css/inline.css'))}

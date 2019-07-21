@@ -20,7 +20,22 @@ module.exports = function (eleventyConfig) {
 	 * @example `${this.callToAction(data)}`
 	 */
 	eleventyConfig.addShortcode('callToAction', function (data) {
+
+		var classes = [
+			'call-to-action',
+			'bold',
+			'border-radius',
+			'less-padding'
+		]
+
 		var html = ''
+
+		var mapArray = (arr, joiner) =>
+			arr.map(item => item)
+				.join (joiner
+					? `${joiner}`
+					: ' '
+				)
 
 		// If there is no separate call to action,
 		// then don’t include the site call to action on that same page
@@ -31,12 +46,12 @@ module.exports = function (eleventyConfig) {
 		// Use this page’s call to action, otherwise use the site’s
 		data.callToAction && data.callToAction.link && data.callToAction.text
 			? html = `
-				<a class="call-to-action" href="${data.callToAction.link}">
+				<a class="${mapArray(classes)} accent-color-2" href="${data.callToAction.link}">
 					<span>${data.callToAction.text}</span>
 				</a>
 			`
 			: html = `
-				<a class="call-to-action" href="${data.site.callToAction.link}">
+				<a class="${mapArray(classes)}" href="${data.site.callToAction.link}">
 					<span>${data.site.callToAction.text}</span>
 				</a>
 			`
