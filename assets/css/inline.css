@@ -1,15 +1,38 @@
+@font-face {
+  font-family: Pittsburgh;
+  src:  url('/includes/assets/fonts/pittsburgh/pittsburgh-light.woff2') format('woff2'),
+        url('/includes/assets/fonts/pittsburgh/pittsburgh-light.woff') format('woff');
+}
+
+@font-face {
+  font-family: Pittsburgh;
+  src:  url('/includes/assets/fonts/pittsburgh/pittsburgh-semibold.woff2') format('woff2'),
+        url('/includes/assets/fonts/pittsburgh/pittsburgh-semibold.woff') format('woff');
+	font-weight: bold;
+}
+
 /**
  * Add box sizing to everything
  * @link https://www.paulirish.com/2012/box-sizing-border-box-ftw/
  */
+html {
+	box-sizing: border-box;
+}
+
 *,
 *:after,
 *:before {
-	box-sizing: border-box;	
+	box-sizing: inherit;
+}
+
+body {
+	font-family: Pittsburgh, sans-serif;
+	margin: 0; /* Remove default margin from <body> in some browsers */
 }
 
 /**
- * Sizing for Google Maps 
+ * @todo Move to external maps-only stylesheet
+ * Sizing for Google Maps
  * @link https://developers.google.com/maps/documentation/javascript/tutorial/
  */
 #map {
