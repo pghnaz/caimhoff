@@ -1,13 +1,32 @@
+/* Normal font */
 @font-face {
   font-family: Pittsburgh;
   src:  url('/includes/assets/fonts/pittsburgh/pittsburgh-light.woff2') format('woff2'),
         url('/includes/assets/fonts/pittsburgh/pittsburgh-light.woff') format('woff');
 }
 
+/* Italic font */
+@font-face {
+  font-family: Pittsburgh;
+  src:  url('/includes/assets/fonts/pittsburgh/pittsburgh-lightitalic.woff2') format('woff2'),
+        url('/includes/assets/fonts/pittsburgh/pittsburgh-lightitalic.woff') format('woff');
+	font-style: italic;
+}
+
+/* Bold font */
 @font-face {
   font-family: Pittsburgh;
   src:  url('/includes/assets/fonts/pittsburgh/pittsburgh-semibold.woff2') format('woff2'),
         url('/includes/assets/fonts/pittsburgh/pittsburgh-semibold.woff') format('woff');
+	font-weight: bold;
+}
+
+/* Bold italic font */
+@font-face {
+  font-family: Pittsburgh;
+  src:  url('/includes/assets/fonts/pittsburgh/pittsburgh-semibolditalic.woff2') format('woff2'),
+        url('/includes/assets/fonts/pittsburgh/pittsburgh-semibolditalic.woff') format('woff');
+	font-style: italic;
 	font-weight: bold;
 }
 
