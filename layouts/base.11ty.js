@@ -16,9 +16,17 @@ module.exports = function (data) {
 		${this.headTag(data)}
 		<body>
 			<header id="site_header">
-				${data.page.url === '/'
-					? `<h1>${data.site.title}</h1>`
-					: `<a href="/"><h1>${data.site.title}</h1></a>`
+				${data.site.logo && data.page.url === '/'
+					? `<span class="logo">${this.fileToString(data.site.logo)}</span>`
+					: data.page.url === '/'
+						? `<h1>${data.site.title}</h1>`
+						: data.site.logo
+							? `<a href="/">
+								<span class="logo">
+									${this.fileToString(data.site.logo)}
+								</span>
+							</a>`
+							: `<a href="/"><h1>${data.site.title}</h1></a>`
 				}
 				${this.callToAction(data)}
 			</header>
