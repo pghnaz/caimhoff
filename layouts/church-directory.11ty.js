@@ -20,12 +20,12 @@ class ChurchDirectory {
 						.map(item => data.churches[item])
 		return `
 			${data.content}
-			<section>
+			<section class="grid">
 				${arr.map(item => {
 					var id = item.properties.gmcID.substr(4)
 					var href = `/${Object.keys(data.churches).find(key => data.churches[key] === item)}`
 					return `
-					<article id="church_${id}">
+					<article class="border border-radius more-padding margin shadow" id="church_${id}">
 						<header>
 							<h1>
 								<a href="${href}">
@@ -57,7 +57,7 @@ class ChurchDirectory {
 								}
 							</p>
 						</section>
-						<footer>
+						<footer class="small">
 							<p><a href="${href}">${data.site.baseURL}${href.substr(1)}</a></p>
 						</footer>
 					</article>

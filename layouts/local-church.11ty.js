@@ -24,7 +24,7 @@ class LocalChurch {
 					<h1>${item.properties.name} Church of the Nazarene</h1>
 				</header>
 				<section>
-					<p>
+					<p class="small gray">
 						${item.properties.gmcID
 							? `ID: <span id="churchID_${id}">
 								${item.properties.gmcID}
@@ -38,50 +38,54 @@ class LocalChurch {
 							: ''
 						}
 					</p>
-					<address>
 						${item.properties.address
-							? `
-								<p>
-									<span>${item.properties.address.street}</span></br>
-									<span id="churchCity_${id}">${item.properties.address.city}</span>,
-									<span>${item.properties.address.state}</span>
-									<span>${item.properties.address.zip}</span>
+							? `<section class="grid grid-repeat-columns">
+									<address>
+									${item.properties.mailingAddress
+										? `<h1>Physical Address</h1>`
+										: ''
+									}
+									<p>
+										<span>${item.properties.address.street}</span></br>
+										<span id="churchCity_${id}">${item.properties.address.city}</span>,
+										<span>${item.properties.address.state}</span>
+										<span>${item.properties.address.zip}</span>
 
-								</p>
-							`
+									</p>
+									${item.properties.phone
+										? `<p>
+											<a href="tel:+1${item.properties.phone
+													.toString()
+													.trim()
+													.replace(/[^0-9]/g, '')}">
+												${item.properties.phone}
+											</a>
+										</p>`
+										: ''
+									}
+								</address>
+								${item.properties.mailingAddress
+									? `<address>
+										<h1>Mailing Address</h1>
+										<p>
+											<span>${item.properties.mailingAddress.street}</span></br>
+											<span id="churchCity_${id}">${item.properties.mailingAddress.city}</span>,
+											<span>${item.properties.mailingAddress.state}</span>
+											<span>${item.properties.mailingAddress.zip}</span>
+
+										</p>
+									</address>`
+									: ''
+								}
+							</section>`
 							: ''
 						}
-					</address>
-					${item.properties.phone
-						? `<p>
-							<a href="tel:+1${item.properties.phone
-									.toString()
-									.trim()
-									.replace(/[^0-9]/g, '')}">
-								${item.properties.phone}
-							</a>
-						</p>`
-						: ''
-					}
 					<p>
 						${item.properties.pastor
 							? `Pastor ${item.properties.pastor}`
 							: 'Praying for our next pastor'
 						}
 					</p>
-					${item.properties.mailingAddress
-						? `<address>
-							<h1>Mailing Address</h1>
-							<p>
-								<span>${item.properties.mailingAddress.street}</span></br>
-								<span id="churchCity_${id}">${item.properties.mailingAddress.city}</span>,
-								<span>${item.properties.mailingAddress.state}</span>
-								<span>${item.properties.mailingAddress.zip}</span>
-
-							</p>
-						</address>`
-						: ''
-					}
 					${item.properties.website
 						? `<p>
 							<a href="${item.properties.website}">
@@ -91,16 +95,7 @@ class LocalChurch {
 						: ''
 					}
 					${item.properties.social
-						? `${(() => {
-							var arr = this.arrayFromObject(item.properties.social)
-							return arr.map(profile => {
-								var platform = Object.keys(item.properties.social)
-										.find(key => item.properties.social[key] === profile).toString().trim()
-								return `
-								<a class="${platform}" href="${profile}">
-									${platform.charAt(0).toUpperCase()}${platform.substr(1)}
-								</a>`}).join('&nbsp;')
-						})()}`
+						? `${this.socialLinks(item.properties.social)}`
 						: ''
 					}
 					<div id="map"></div>
