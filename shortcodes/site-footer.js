@@ -21,7 +21,7 @@ module.exports = function (eleventyConfig) {
 	 */
 	eleventyConfig.addShortcode('siteFooter', function (data) {
 		return `
-			<footer id="site_footer" class="grid grid-column-full-bleed less-padding align-items-center border-top gray background-gray">
+			<footer id="site_footer" class="grid grid-column-full-bleed medium less-padding align-items-center border-top gray background-gray">
 				<div class="flex space-between">
 					<p><a href="/copyright/">Copyright</a> &copy; ${data.site.copyright.year} by ${data.site.copyright.owner}</p>
 					${this.socialLinks(data.site.social)}

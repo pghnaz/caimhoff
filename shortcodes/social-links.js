@@ -24,7 +24,7 @@ module.exports = function (eleventyConfig) {
 		var profiles = this.arrayFromObject(social)
 
 		return `
-			<nav class="flex align-items-center">
+			<nav class="social-links flex align-items-center">
 				${profiles.map(profile => {
 
 					var platform = Object.keys(social)
