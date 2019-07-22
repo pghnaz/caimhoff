@@ -7,12 +7,13 @@
  * An Eleventy JavaScript template using classes and optional data method
  * @class
  * @see {@link https://www.11ty.io/docs/languages/javascript/#classes 11ty docs}
+ * @see {@link https://www.11ty.io/docs/config/#directory-for-layouts-(optional) Optional 11ty layouts directory}
  */
 class Content {
 
 	data() {
 		return {
-			layout: 'layouts/base'
+			layout: '../includes/layouts/base' // relative to 11ty layouts
 		}
 	}
 
