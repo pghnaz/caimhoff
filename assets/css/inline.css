@@ -336,12 +336,28 @@
 			color: var(--black);
 		}
 
+		.black svg {
+			color: var(--black);
+		}
+
 		.white {
+			color: var(--white);
+		}
+
+		.white svg {
 			color: var(--white);
 		}
 
 		.gray {
 			color: var(--gray);
+		}
+
+		.gray svg {
+			fill: var(--gray);
+		}
+
+		.light-gray {
+			color: var(--light-gray);
 		}
 
 		.main-color {
@@ -365,7 +381,7 @@
 		}
 
 		.background-gray {
-			background-color: var(--gray);
+			background-color: var(--light-gray);
 		}
 
 	/*

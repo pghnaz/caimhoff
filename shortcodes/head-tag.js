@@ -33,6 +33,7 @@ module.exports = function (eleventyConfig) {
 							--black: ${data.site.colors.black};
 							--white: ${data.site.colors.white};
 							--gray: ${data.site.colors.gray};
+							--light-gray: ${data.site.colors.lightGray};
 							--main-color: ${data.site.colors.main};
 							--accent-color-1: ${data.site.colors.accentOne};
 							--accent-color-2: ${data.site.colors.accentTwo};
