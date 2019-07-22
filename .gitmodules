@@ -1,0 +1,3 @@
+[submodule "assets/images/icons"]
+	path = assets/images/icons
+	url = https://github.com/shenangopress/catharticons.git
