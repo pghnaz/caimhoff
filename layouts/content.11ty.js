@@ -1,5 +1,5 @@
 /**
- * @file Defines the nested content template
+ * @file Defines the nested template for content in markdown files
  * @author Reuben L. Lillie <rlillie@pghnaz.org>
  */
 
@@ -19,16 +19,24 @@ class Content {
 
 	render(data) {
 		return `
-			${data.title
-				? `<header id="main_header">
-					<h1>${data.title}</h1>
-				</header>`
-				: ''
-			}
-			${data.content}
-			<footer class="small">
-				<p>${this.editThisPage(data)}</p>
-			</footer>
+			<article>
+				${data.title
+					? `<header>
+						<h1>${data.title}</h1>
+					</header>`
+					: ''
+				}
+				${data.image
+					? `<figure class="float-left margin-right padding-right" style="max-width:33ch;">
+							${this.fileToString(data.image)}
+						</figure>`
+					: ''
+				}
+				${data.content}
+				<footer class="small">
+					<p>${this.editThisPage(data)}</p>
+				</footer>
+			</article>
 		`
 	}
 
