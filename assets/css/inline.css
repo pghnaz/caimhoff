@@ -88,9 +88,11 @@
 			--base-unit-half: calc(var(--base-unit) / 2);
 			--base-unit-2x: calc(var(--base-unit) * 2);
 			--base-unit-4x: calc(var(--base-unit) * 4);
+			--base-unit-8x: calc(var(--base-unit) * 8);
 			--paragraph-width: 66ch;
+			--half-width: calc(var(--paragraph-width) / 2);
 			/* Shading */
-			--shadow: var(--base-unit-quarter) var(--base-unit-quarter) var(--base-unit-quarter) var(--gray);
+			--shadow: var(--base-unit-quarter) var(--base-unit-quarter) var(--base-unit-quarter) var(--black);
 		}
 
 	/*
@@ -152,7 +154,14 @@
 
 			.grid {
 				display: grid;
+			}
+
+			.grid-row-gap {
 				grid-row-gap: var(--base-unit-4x);
+			}
+
+			.grid-column-gap {
+				grid-column-gap: var(--base-unit-4x);
 			}
 
 			.grid-column-full-bleed {
@@ -165,7 +174,6 @@
 
 			.grid-repeat-columns {
 				grid-template-columns: repeat(auto-fit, minmax(300px,1fr));
-				grid-column-gap: var(--base-unit-4x);
 			}
 
 			#site_header {
@@ -173,16 +181,16 @@
 			}
 
 			#site_main {
-				grid-row: 2;
+				grid-row: 3;
 			}
 
 			#site_footer {
-				grid-row: 3;
+				grid-row: 4;
 			/*	grid-template-columns: 1fr max-content; */
 			}
 
-			#site_footer :last-child {
-				grid-row: 2;
+			#footer_branding {
+				grid-row: 3;
 				grid-column: 1 / -1;
 			}
 
@@ -227,7 +235,11 @@
 				align-self: end;
 			}
 
-			#site_header {
+			/*
+			 * @todo move section style to home.css
+			 */
+			#site_header,
+		  #site_header div	{
 				justify-content: space-around;
 			}
 
@@ -257,9 +269,45 @@
 				margin: 0;
 			}
 
+			.margin-top {
+				margin-top: var(--base-unit-2x);
+			}
+
+			.margin-right {
+				margin-right: var(--base-unit-2x);
+			}
+
+			.margin-bottom {
+				margin-bottom: var(--base-unit-2x);
+			}
+
+			.margin-left {
+				margin-left: var(--base-unit-2x);
+			}
+
+			/*
+			 * @todo move to home.css
+			 */
+			.home #site_header {
+				min-height: 100vh;
+				display: grid;
+				grid-template-columns: 100%;
+			}
+
 /***********************************************************************
  * 4.0 Images
  **********************************************************************/
+
+	img {
+		color: var(--gray);
+		width: inherit;
+		max-width: 100%;
+	}
+
+	figure {
+		margin: 0;
+		width: 100%;
+	}
 
 	picture {
 		line-height: 0;
@@ -267,17 +315,20 @@
 		margin: 0 auto;
 	}
 
-	img {
-		max-width: 100%;
-		color: var(--gray);
+	.half-width {
+		width: var(--half-width);
 	}
 
 /***********************************************************************
  * 5.0 Typography
  **********************************************************************/
 
+	p {
+		max-width: var(--paragaph-width);
+	}
+
 	.bold {
-		font-bold: bold;
+		font-weight: bold;
 	}
 
 	.x-small {
@@ -300,12 +351,20 @@
 		font-size: x-large;
 	}
 
+	.text-center {
+		text-align: center;
+	}
+
+	.text-shadow {
+		text-shadow: var(--shadow);
+	}
+
 /***********************************************************************
  * 6.0 Links
  **********************************************************************/
 
 	a {
-		color: var(--main-color);
+		color: inherit;
 		font-weight: bold;
 	}
 
@@ -338,28 +397,29 @@
 			color: var(--black);
 		}
 
-		.black svg {
-			color: var(--black);
+		.black > svg {
+			fill: var(--black);
 		}
 
 		.white {
 			color: var(--white);
 		}
 
-		.white svg {
-			color: var(--white);
+		.white > svg {
+			fill: var(--white);
 		}
 
 		.gray {
 			color: var(--gray);
 		}
 
-		.gray svg {
+		#site_footer svg,
+		.gray > svg {
 			fill: var(--gray);
 		}
 
 		.light-gray {
-			color: var(--light-gray);
+			fill: var(--light-gray);
 		}
 
 		.main-color {
@@ -443,7 +503,11 @@
 	}
 
 	@media screen and (min-width: 960px) {
-			#site_header {
+			/*
+			 * @todo move section style to home.css
+			 */
+			#site_header,
+		  #site_header div	{
 				justify-content: space-between;
 			}
 
@@ -472,12 +536,113 @@
 }
 
 .gm-style {
-	font-family: Piitsbugh, sans-serif;
+	font-family: Pittsbugh, sans-serif;
 }
 
-.logo svg {
+.logo > svg {
 	height: auto;
 	width: calc(var(--paragraph-width) / 3);
 	max-width: 100vw;
 	padding: var(--base-unit-2x);
+}
+
+.social-links svg {
+	width: auto;
+	height: 1.5em;
+}
+
+footer nav ul {
+	list-style: none;
+	margin: var(--base-unit-2x) 0;
+	padding-left: 0;
+}
+
+footer nav ul li {
+	margin: var(--base-unit) 0;
+}
+
+ul {
+	list-style-image: url(/branding/images/astroid.svg);
+	padding-left: 1.5em;
+}
+
+/*
+ * @todo move to home
+ */
+#auxiliaries > div {
+	position: relative;
+}
+
+#auxiliaries > div:after {
+	background-repeat: no-repeat;
+	background-size: cover;
+	content: "";
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+	z-index: -1;
+}
+
+#auxiliaries > div:nth-of-type(1):after {
+  background-image: url(branding/images/bible-journal-and-coffee_320.jpg);
+}
+
+#auxiliaries > div:nth-of-type(2):after {
+  background-image: url(branding/images/middle-east-map_320.jpg);
+}
+
+#auxiliaries > div:nth-of-type(3):after {
+	background-position: bottom;
+  background-image: url(branding/images/pghnyi-nyc-2019-work-and-witness_320.jpg);
+}
+
+.home #site_header {
+	background-image: url(branding/images/10th-street-bridge-pittsburgh_1024.jpg);
+}
+
+@media screen and (min-width: 1025px) {
+	.home #site_header {
+		background-image: url(branding/images/10th-street-bridge-pittsburgh_2048.jpg);
+	}
+}
+
+@media screen and (min-width: 2049px) {
+	.home #site_header {
+		background-image: url(branding/images/10th-street-bridge-pittsburgh.jpg);
+	}
+}
+
+.float-left {
+	float: left;
+}
+
+.margin-top {
+	margin-top: var(--base-unit-2x);
+}
+
+.margin-right {
+	margin-right: var(--base-unit-2x);
+}
+
+.margin-bottom {
+	margin-bottom: var(--base-unit-2x);
+}
+
+/*
+ * @todo to forms.css
+ * Forms
+ */
+button {
+	border: none;
+	max-width: calc(25 * var(--base-unit));
+}
+
+button,
+input,
+select,
+textarea {
+	font-family: inherit;
+	font-size: inherit;
 }
