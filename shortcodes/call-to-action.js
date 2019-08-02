@@ -26,7 +26,8 @@ module.exports = function (eleventyConfig) {
 			'bold',
 			'border-radius',
 			'more-margin',
-			'padding'
+			'padding',
+			'text-center'
 		]
 
 		var html = ''
