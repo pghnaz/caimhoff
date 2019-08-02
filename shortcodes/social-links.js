@@ -40,7 +40,7 @@ module.exports = function (eleventyConfig) {
 					// If the icon file exists, then display it inline.
 					// Otherwise use text.
 					return `
-						<a class="${platform}" href="${profile}">
+						<a class="${platform} padding margin" href="${profile}">
 							${fs.statSync(`src/${iconPath}`).isFile()
 								? `${this.fileToString(iconPath)}`
 								: `${platform.charAt(0).toUpperCase()}${platform.substr(1)}`
