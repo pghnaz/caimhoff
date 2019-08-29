@@ -315,10 +315,6 @@
 		margin: 0 auto;
 	}
 
-	.half-width {
-		width: var(--half-width);
-	}
-
 /***********************************************************************
  * 5.0 Typography
  **********************************************************************/
@@ -474,7 +470,8 @@
 			border-radius: var(--base-unit);
 		}
 
-		.circular {
+		.circular,
+    .circular img {
 			border-radius: 50%;
 		}
 
@@ -501,6 +498,22 @@
 			font-size: xx-large;
 		}
 	}
+
+  /* Wrap text around images on larger screens */
+	@media screen and (min-width: 600px) {
+    .float-left {
+      float: left;
+    }
+
+    .half-width {
+      width: var(--half-width);
+    }
+
+    .circular,
+    .circular img {
+        shape-outside: circle(50%);
+    }
+  }
 
 	@media screen and (min-width: 960px) {
 			/*
@@ -612,10 +625,6 @@ ul {
 	.home #site_header {
 		background-image: url(branding/images/10th-street-bridge-pittsburgh.jpg);
 	}
-}
-
-.float-left {
-	float: left;
 }
 
 .margin-top {
