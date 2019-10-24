@@ -22,7 +22,7 @@ module.exports = function (eleventyConfig) {
 	 */
 	eleventyConfig.addShortcode('editThisPage', function (data, editLinkText) {
 		return `
-			<a class="edit-link" href="${data.site.repository}${data.page.inputPath}">
+			<a class="edit-link" href="${data.pkg.repository.master}${data.page.inputPath}" target="_blank">
 				${editLinkText && typeof editLinkText === 'string'
 					? `${editLinkText}`
 					: 'Edit this page'
