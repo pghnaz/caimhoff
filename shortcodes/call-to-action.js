@@ -48,7 +48,7 @@ module.exports = function (eleventyConfig) {
 		// Use this page’s call to action, otherwise use the site’s
 		data.callToAction && data.callToAction.link && data.callToAction.text
 			? html = `
-				<a class="${mapArray(classes)} accent-color-2" href="${data.callToAction.link}">
+				<a class="${mapArray(classes)}" href="${data.callToAction.link}">
 					<span>${data.callToAction.text}</span>
 				</a>
 			`
